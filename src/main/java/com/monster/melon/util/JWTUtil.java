@@ -28,7 +28,6 @@ public class JWTUtil {
 
     @Value("${secret}")
     public void setSecret(String secret) {
-        System.out.println(secret + "                   !!!!!!!!!!");
         JWTUtil.secret = secret;
     }
 
@@ -37,7 +36,7 @@ public class JWTUtil {
         try {
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            return JWT.create().withClaim("userName",user.getId()).withExpiresAt(date).sign(algorithm);
+            return JWT.create().withClaim("userName",user.getUserName()).withExpiresAt(date).sign(algorithm);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return null;
