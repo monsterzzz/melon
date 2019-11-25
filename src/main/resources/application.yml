@@ -20,6 +20,7 @@ secret: monster
 expire_time: 30
 comment_page: 7
 event_num: 7
+news_page: 7
 
 
 logging:

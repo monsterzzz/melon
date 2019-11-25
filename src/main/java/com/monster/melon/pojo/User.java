@@ -31,14 +31,6 @@ public class User {
                 '}';
     }
 
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -47,14 +39,20 @@ public class User {
         this.id = id;
     }
 
-
-
     public String getUserName() {
         return userName;
     }
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getPassword() {
@@ -81,11 +79,11 @@ public class User {
         this.description = description;
     }
 
-    public Timestamp getSignDate() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setSignDate(Timestamp createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 }

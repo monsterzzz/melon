@@ -24,11 +24,12 @@ create table news(
     event_id char(16) not null ,
     admin_opt int(2) not null default 0,
     happen_time int(5) not null default 0,
-    content char(16) not null ,
+    content varchar(255) not null ,
+    like_num int(15) not null default 0,
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+# alter table news add column like_num int(15) not null default 0;
 
 # drop table event;
 create table event(

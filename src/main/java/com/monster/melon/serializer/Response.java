@@ -1,8 +1,12 @@
 package com.monster.melon.serializer;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class Response {
     private Integer code = 200;
     private String msg;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
 
 
