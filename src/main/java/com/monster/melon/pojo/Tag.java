@@ -2,18 +2,17 @@ package com.monster.melon.pojo;
 
 import java.sql.Timestamp;
 
-public class Event {
+public class Tag {
+
     private Integer id;
-    private Integer userId;
     private String description;
     private Timestamp createTime;
     private Timestamp updateTime;
 
     @Override
     public String toString() {
-        return "Event{" +
+        return "Tag{" +
                 "id=" + id +
-                ", userId=" + userId +
                 ", description='" + description + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
@@ -26,14 +25,6 @@ public class Event {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public String getDescription() {

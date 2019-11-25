@@ -26,20 +26,22 @@ create table news(
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+# drop table event;
 create table event(
     id int(32) primary key AUTO_INCREMENT,
     user_id int(32) not null,
     description varchar(255) not null ,
     create_time datetime DEFAULT CURRENT_TIMESTAMP,
-    update_time datetime DEFAULT null on update CURRENT_TIMESTAMP
+    update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+# drop table tag;
 create table tag(
     id int(32) primary key AUTO_INCREMENT,
     description varchar(255) not null ,
     create_time datetime DEFAULT CURRENT_TIMESTAMP,
-    update_time datetime DEFAULT null on update CURRENT_TIMESTAMP
+    update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table event_tag(
@@ -57,12 +59,13 @@ create table media(
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+# drop table avatar;
 create table avatar(
     id int(32) primary key AUTO_INCREMENT,
     user_id int(32) not null ,
     path varchar(255) not null ,
     create_time datetime DEFAULT CURRENT_TIMESTAMP,
-    update_time datetime DEFAULT null on update CURRENT_TIMESTAMP
+    update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
