@@ -15,9 +15,13 @@ mybatis:
     map-underscore-to-camel-case: true
 
 
-secret: monster
-expire_time: 5
 
-#jwt:
-#  secret: monster
-#  expire_time: 5
+secret: monster
+expire_time: 30
+comment_page: 7
+
+
+
+logging:
+  level:
+    com.monster.mapper: debug

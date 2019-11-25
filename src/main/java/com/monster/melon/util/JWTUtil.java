@@ -4,6 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.monster.melon.pojo.User;
 import org.springframework.beans.factory.annotation.Value;
@@ -58,14 +60,12 @@ public class JWTUtil {
             JWTVerifier jwtVerifier = JWT.require(algorithm).withClaim("userName",userName).build();
             DecodedJWT jwt = jwtVerifier.verify(token);
             return true;
-        } catch (UnsupportedEncodingException | JWTDecodeException e) {
+        } catch (UnsupportedEncodingException | JWTDecodeException | SignatureVerificationException | TokenExpiredException e) {
             e.printStackTrace();
             return false;
         }
 
     }
-
-
 
 
 }
