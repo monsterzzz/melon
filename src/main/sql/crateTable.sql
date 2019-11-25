@@ -2,9 +2,9 @@
 # drop table user;
 # drop table comment;
 # drop table news;
-# drop table photo;
+# drop table media;
 
-show tables ;
+# show tables ;
 
 
 create table user(
@@ -26,14 +26,44 @@ create table news(
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create table photo(
+create table event(
+    id int(32) primary key AUTO_INCREMENT,
+    user_id int(32) not null,
+    description varchar(255) not null ,
+    create_time datetime DEFAULT CURRENT_TIMESTAMP,
+    update_time datetime DEFAULT null on update CURRENT_TIMESTAMP
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table tag(
+    id int(32) primary key AUTO_INCREMENT,
+    description varchar(255) not null ,
+    create_time datetime DEFAULT CURRENT_TIMESTAMP,
+    update_time datetime DEFAULT null on update CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table event_tag(
+    id int(32) primary key AUTO_INCREMENT,
+    event_id int(32) not null ,
+    tag_id int(32) not null
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table media(
     id int(32) primary key AUTO_INCREMENT,
     user_id int(32) not null ,
-    comment_id int(32) not null ,
+    news_id int(32) not null ,
+    type char(10) not null ,
     path varchar(255) not null ,
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+create table avatar(
+    id int(32) primary key AUTO_INCREMENT,
+    user_id int(32) not null ,
+    path varchar(255) not null ,
+    create_time datetime DEFAULT CURRENT_TIMESTAMP,
+    update_time datetime DEFAULT null on update CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 create table comment(

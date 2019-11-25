@@ -1,6 +1,7 @@
 package com.monster.melon.pojo;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 
 public class News {
     private Integer id;
@@ -8,15 +9,36 @@ public class News {
     private Integer eventId;
     private String content;
     private Timestamp createTime;
-    private Photo[] photos;
+    private Media[] Media;
     private Comment[] comments;
 
-    public Photo[] getPhotos() {
-        return photos;
+    @Override
+    public String toString() {
+        return "News{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", eventId=" + eventId +
+                ", content='" + content + '\'' +
+                ", createTime=" + createTime +
+                ", Media=" + Arrays.toString(Media) +
+                ", comments=" + Arrays.toString(comments) +
+                '}';
     }
 
-    public void setPhotos(Photo[] photos) {
-        this.photos = photos;
+    public com.monster.melon.pojo.Media[] getMedia() {
+        return Media;
+    }
+
+    public void setMedia(com.monster.melon.pojo.Media[] media) {
+        Media = media;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
     public Timestamp getAddDate() {
