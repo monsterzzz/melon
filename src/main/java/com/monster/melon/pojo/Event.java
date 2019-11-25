@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class Event {
     private Integer id;
     private Integer userId;
+    private String name;
     private String description;
     private Timestamp createTime;
     private Timestamp updateTime;
@@ -18,6 +19,14 @@ public class Event {
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getId() {

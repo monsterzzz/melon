@@ -22,14 +22,19 @@ create table news(
     id int(32) primary key AUTO_INCREMENT,
     user_id int(32) not null,
     event_id char(16) not null ,
+    admin_opt int(2) not null default 0,
+    happen_time int(5) not null default 0,
     content char(16) not null ,
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 # drop table event;
 create table event(
     id int(32) primary key AUTO_INCREMENT,
     user_id int(32) not null,
+    name varchar(30) not null ,
     description varchar(255) not null ,
     create_time datetime DEFAULT CURRENT_TIMESTAMP,
     update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
