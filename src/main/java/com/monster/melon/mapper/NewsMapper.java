@@ -16,7 +16,14 @@ public interface NewsMapper {
     @Select("select * from news where user_id = #{userId}")
     List<News> getUserNews(@Param(value = "userId") Integer userId);
 
-    @Select("select a.*,count(b.id) as comment_num from news as a left join comment as b on b.news_id = a.id where admin_opt = 0 and event_id = #{eventId} group by id limit #{start},#{end}")
+    @Select("select a.*,count(b.id) as comment_num,like_num from news as a\n" +
+            "left join comment as b on (b.news_id = a.id)\n" +
+            "left join\n" +
+            "    (select news_id,count(*) as like_num from news_like group by news_like.news_id)\n" +
+            "        as c on a.id = c.news_id\n" +
+            "where admin_opt = 0 and event_id = #{eventId}\n" +
+            "group by a.id\n" +
+            "limit #{start},#{end};")
     List<News> getOnePageNews(@Param(value = "eventId") Integer newsId,@Param(value = "start") Integer start,@Param(value = "end") Integer end);
 
     @Insert("insert into news (id,user_id,event_id,admin_opt,happen_time,content) values(#{id},#{userId},#{eventId},#{adminOpt},#{happenTime},#{content})")

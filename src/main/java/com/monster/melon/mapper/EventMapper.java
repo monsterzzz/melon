@@ -13,7 +13,7 @@ public interface EventMapper {
     @Select("select * from event")
     List<Event> getAllEvents();
 
-    @Select("select * from event limit #{page},#{num}")
+    @Select("select * from event  limit #{page},#{num}")
     List<Event> getOnePageEvent(@Param(value = "page") Integer page,@Param(value = "num") Integer num);
 
     @Insert("insert into event (id,name,description,user_id) values(#{id},#{name},#{description},#{userId})")
