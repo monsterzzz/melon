@@ -16,7 +16,7 @@ public interface CommentMapper {
     @Select("select * from comment where user_id = #{userId}")
     List<Comment> getUserComments(@Param(value = "userId") Integer userId);
 
-    @Select("select * from comment where news_id = #{newsId} limit #{start},#{end}")
+    @Select("select a.*,count(b.id) as like_num from comment as a left join comment_like as b on a.id = b.comment_id where news_id = #{newsId} group by a.id limit #{start},#{end}")
     List<Comment> getNewsPageComments(@Param(value = "newsId") Integer newsId,@Param(value = "start") Integer start,@Param(value = "end") Integer end);
 
     @Insert("insert into comment (id,user_id,news_id,reply_id,content) values(#{id},#{userId},#{newsId},#{replyId},#{content})")

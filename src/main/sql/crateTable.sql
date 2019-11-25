@@ -29,7 +29,7 @@ create table news(
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-# alter table news add column like_num int(15) not null default 0;
+# alter table news drop column like_num;
 
 # drop table event;
 create table event(
@@ -39,8 +39,9 @@ create table event(
     description varchar(255) not null ,
     create_time datetime DEFAULT CURRENT_TIMESTAMP,
     update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+# alter table event add column view_num int(32) not null default 0;
 
 # drop table tag;
 create table tag(
@@ -84,7 +85,20 @@ create table comment(
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+create table comment_like (
+    id int(32) primary key AUTO_INCREMENT,
+    user_id int(32) not null ,
+    comment_id int(32) not null ,
+    create_time datetime DEFAULT CURRENT_TIMESTAMP,
+    update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+create table news_like (
+    id int(32) primary key AUTO_INCREMENT,
+    user_id int(32) not null ,
+    news_id int(32) not null ,
+    create_time datetime DEFAULT CURRENT_TIMESTAMP,
+    update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

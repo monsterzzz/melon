@@ -13,17 +13,17 @@ public class News {
     private String content;
     private Integer happenTime = 0;
     private Integer adminOpt = 0;
-    private Integer LikeNum = 0;
     private Integer commentNum = 0;
     private Timestamp createTime;
+    private Integer likeNum = 0;
     private Media[] Media;
 
     public Integer getLikeNum() {
-        return LikeNum;
+        return likeNum;
     }
 
     public void setLikeNum(Integer likeNum) {
-        LikeNum = likeNum;
+        this.likeNum = likeNum;
     }
 
     public Integer getId() {

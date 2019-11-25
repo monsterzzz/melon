@@ -10,6 +10,7 @@ public class Comment {
     private String content;
     private Timestamp createTime;
     private Integer replyId;
+    private Integer likeNum;
 
     @Override
     public String toString() {
@@ -77,5 +78,13 @@ public class Comment {
 
     public void setReplyId(Integer replyId) {
         this.replyId = replyId;
+    }
+
+    public Integer getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(Integer likeNum) {
+        this.likeNum = likeNum;
     }
 }
