@@ -12,11 +12,14 @@ create table user(
     username char(16) not null unique ,
     password char(16) not null ,
     nickname char(16) not null ,
-    avatar varchar(255) not null ,
+    avatar int(32) not null default 1,
     description char(255) not null,
+    status int(3) not null default 0,
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+# update user set avatar = '';
+# alter table user add column status int(3) not null default 0;
 
 create table news(
     id int(32) primary key AUTO_INCREMENT,
@@ -46,10 +49,12 @@ create table event(
 # drop table tag;
 create table tag(
     id int(32) primary key AUTO_INCREMENT,
-    description varchar(255) not null ,
+    description char(10) not null unique ,
     create_time datetime DEFAULT CURRENT_TIMESTAMP,
     update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+# alter table tag modify column description char(10) not null unique;
 
 create table event_tag(
     id int(32) primary key AUTO_INCREMENT,
@@ -69,12 +74,11 @@ create table media(
 # drop table avatar;
 create table avatar(
     id int(32) primary key AUTO_INCREMENT,
-    user_id int(32) not null ,
     path varchar(255) not null ,
-    create_time datetime DEFAULT CURRENT_TIMESTAMP,
-    update_time datetime DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+    md5 char(32) not null unique ,
+    create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+# alter table avatar add column md5 char(32) not null ;
 
 create table comment(
     id int(32) primary key AUTO_INCREMENT,

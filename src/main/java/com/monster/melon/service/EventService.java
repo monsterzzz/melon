@@ -21,7 +21,6 @@ public class EventService{
         this.eventMapper = eventMapper;
     }
 
-
     public List<Event> getAllEvents() {
         return eventMapper.getAllEvents();
     }
@@ -31,11 +30,16 @@ public class EventService{
         return eventMapper.getOnePageEvent(page * eventNum,eventNum);
     }
 
-    public void insertEvent(Event event) {
-        eventMapper.insertEvent(event);
+    public void insertEvent(Event event,Integer userId) {
+        eventMapper.insertEvent(event,userId);
     }
 
     public void deleteEvent(Integer id) {
         eventMapper.deleteEvent(id);
+    }
+
+    public List<Event> getEventsByTag(Integer tagId,Integer page){
+        page = Math.max(page-1,0);
+        return eventMapper.getEventsByTag(tagId,page*eventNum,eventNum);
     }
 }

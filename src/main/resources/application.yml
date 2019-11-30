@@ -9,12 +9,22 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  mail:
+    host: smtp.sina.com
+    username: monster_zzz@sina.com
+    password: a885471db6e6302a
+    # default-encoding: UTF-8
+
+
+mail_form_addr: monster_zzz@sina.com
+
 
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  typeAliasesPackage: com.monster.melon.pojo
 
 
 secret: monster
@@ -22,6 +32,12 @@ expire_time: 30
 comment_page: 7
 event_num: 7
 news_page: 7
+
+
+endpoint: http://oss-cn-beijing.aliyuncs.com
+accessKeyId: LTAI4Fn1Vutg5RhfQkaVgHXn
+accessKeySecret: 4y3mJJzSbphBekOqZSz2FHxUiCzkkO
+bucketName: melon-site
 
 
 logging:

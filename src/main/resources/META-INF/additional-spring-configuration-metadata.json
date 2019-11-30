@@ -4,5 +4,10 @@
       "name": "expire_time",
       "type": "java.lang.String",
       "description": "Description for expire_time."
-  }
-] }
+    },
+    {
+      "name": "oss",
+      "type": "java.lang.String",
+      "description": "Description for oss."
+    }
+  ] }

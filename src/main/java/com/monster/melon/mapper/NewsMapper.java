@@ -2,6 +2,7 @@ package com.monster.melon.mapper;
 
 import com.monster.melon.pojo.News;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -35,5 +36,8 @@ public interface NewsMapper {
 
     @Select("select a.*,count(b.content) as comment_num from news as a left join comment as b on a.id = b.news_id where a.id = #{id};")
     News getNewsById(@Param(value = "id") Integer id);
+
+    @Select("select count(*) from news where event_id = #{eventId}")
+    Integer getNewsCountByEventId(@Param("eventId") Integer eventId);
 
 }

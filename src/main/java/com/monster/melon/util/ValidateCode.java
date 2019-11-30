@@ -76,13 +76,13 @@ public class ValidateCode {
         buffImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = buffImg.createGraphics();
 
-        /*// 将图像背景填充为白色
+        // 将图像背景填充为白色
         g.setColor(Color.WHITE);
-        g.fillRect(0, 0, width, height);*/
+        g.fillRect(0, 0, width, height);
         // 增加下面代码使得背景透明
-        buffImg = g.getDeviceConfiguration().createCompatibleImage(width, height, Transparency.TRANSLUCENT);
-        g.dispose();
-        g = buffImg.createGraphics();
+//        buffImg = g.getDeviceConfiguration().createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+//        g.dispose();
+//        g = buffImg.createGraphics();
         // 背景透明代码结束
 
         // 画图BasicStroke是JDK中提供的一个基本的画笔类,我们对他设置画笔的粗细，就可以在drawPanel上任意画出自己想要的图形了。

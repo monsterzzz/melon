@@ -2,6 +2,7 @@ package com.monster.melon.mapper;
 
 import com.monster.melon.pojo.Comment;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -40,5 +41,8 @@ public interface CommentMapper {
 
     @Select("select * from comment where id = #{id}")
     Comment getCommentById(@Param(value = "id") Integer id);
+
+    @Select("select count(*) from comment where eventId = #{eventId}")
+    Integer getCommonCountByEventId(@Param("eventId") Integer eventId);
 
 }

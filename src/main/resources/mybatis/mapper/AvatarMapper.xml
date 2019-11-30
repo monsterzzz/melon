@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.monster.melon.mapper.AvatarMapper">
+
+    <resultMap id="Avatar" type="Avatar">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="path" property="path"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="md5" property="md5"/>
+    </resultMap>
+
+    <select id="getAvatarPathByMd5" parameterType="string" resultType="Avatar">
+        select * from avatar where md5 = #{md5}
+    </select>
+
+    <insert id="insertAvatar" parameterType="Avatar" useGeneratedKeys="true" keyProperty="id">
+        insert into avatar (path,md5)
+        VALUES (#{path},#{md5})
+    </insert>
+
+    <update id="updateAvatar">
+        update user set avatar = #{avatarId} where user.id = #{userId}
+    </update>
+
+    <delete id="deleteAvatar" parameterType="string">
+        delete from avatar where md5 = #{md5};
+    </delete>
+
+    <select id="avatarExists" parameterType="string" resultType="integer">
+        select count(*) from avatar where md5 = #{md5}
+    </select>
+
+    <select id="getAvatarPath" parameterType="integer" resultType="java.lang.String">
+        select path from avatar where avatar.id = #{avatarId}
+    </select>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.monster.melon.mapper.UserMapper">
+    <resultMap id="User" type="User">
+        <id column="id" property="id"/>
+        <result column="username" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="nickname" property="nickName"/>
+        <result column="description" property="description"/>
+        <result column="create_time" property="createTime"/>
+<!--        <result column="avatar" property="avatar" />-->
+        <association column="aid"  property="avatar" javaType="string" select="com.monster.melon.mapper.AvatarMapper.getAvatarPath"/>
+    </resultMap>
+<!--    <select id="getUserById" resultType="com.monster.melon.pojo.User">-->
+<!--        select u.id,u.username,u.nickname,u.description,u.create_time,a.path as avatar from user as u left join melon.avatar as a on a.user_id = u.id where u.id = #{id};-->
+<!--    </select>-->
+
+    <select id="getUserById" resultType="com.monster.melon.pojo.User" resultMap="User">
+        select id, username, password, nickname, description, create_time, avatar as aid from user as u where u.id = #{id};
+    </select>
+
+
+
+</mapper>
