@@ -59,7 +59,7 @@ public class TagController {
     @GetMapping("/{tagId}/{page}")
     public Response getTagEvents(@PathVariable("tagId") Integer tagId,@PathVariable("page") Integer page){
         Response response = new Response();
-        MailUtil.sendTxtMail("springboot test mail","hello world","373016896@qq.com");
+
         List<Event> events = eventService.getEventsByTag(tagId,page);
         if(events.size() != 0){
             response.setCode(90000);

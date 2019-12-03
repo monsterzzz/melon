@@ -13,7 +13,17 @@ spring:
     host: smtp.sina.com
     username: monster_zzz@sina.com
     password: a885471db6e6302a
-    # default-encoding: UTF-8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 60s
+    jedis:
+      pool:
+        max-idle: 500
+        min-idle: 50
+        max-wait: -1
+        max-active: -1
 
 
 mail_form_addr: monster_zzz@sina.com

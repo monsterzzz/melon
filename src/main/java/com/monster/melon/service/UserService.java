@@ -6,6 +6,8 @@ import com.monster.melon.mapper.UserMapper;
 import com.monster.melon.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -21,6 +23,7 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
+    @Cacheable(value = "user",keyGenerator = "keyGenerator")
     public List<User> getAllUser() {
         return userMapper.getAllUser();
     }
@@ -58,6 +61,11 @@ public class UserService {
 
     public void updatePassword(String password,Integer userId){
         userMapper.updatePassword(password,userId);
+    }
+
+
+    public void updateStatus(Integer userId){
+        userMapper.updateStatus(userId);
     }
 
 }

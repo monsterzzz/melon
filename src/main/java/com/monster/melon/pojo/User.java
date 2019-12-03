@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.UUID;
 
 @Data
 @ToString
-public class User {
+public class User implements Serializable {
 
     private Integer id;
     private String userName;
@@ -21,5 +22,6 @@ public class User {
     private String description = "现在还是个谜团哦";
     private Integer status;
     private Timestamp createTime;
+    private String email;
 
 }

@@ -5,13 +5,16 @@ import com.monster.melon.pojo.User;
 import com.monster.melon.serializer.Response;
 import com.monster.melon.service.UserService;
 import com.monster.melon.util.Common;
+import com.monster.melon.util.MailUtil;
 import com.monster.melon.util.UserUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 @Slf4j
@@ -122,6 +125,46 @@ public class UserController {
     @DeleteMapping("/{id}")
     public String deleteUserById(@PathVariable(value = "id") Integer id){
         return "success";
+    }
+
+    @GetMapping("/active")
+    public Response getActive(HttpServletRequest request){
+        Response response = new Response();
+        HttpSession session = request.getSession();
+        User user = UserUtil.getCurrentUserBySession(request);
+        if(user.getStatus() != 0){
+            response.setCode(60001);
+            response.setMsg("already active");
+            return response;
+        }
+        ArrayList<String> activeCode = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < 6; i++) {
+            activeCode.add(Integer.toString(random.nextInt()));
+        }
+        String ac = activeCode.toString();
+        session.setAttribute("activeCode",ac);
+        MailUtil.sendTxtMail("瓜站激活",String.format("验证码: %s",ac),user.getEmail());
+        response.setCode(60000);
+        response.setMsg("success");
+        return response;
+    }
+
+    @PostMapping("/active")
+    public Response userActive(HttpServletRequest request,@RequestParam("ac") String ac){
+        User user = UserUtil.getCurrentUserBySession(request);
+        String activeCode = (String) request.getSession().getAttribute("activeCode");
+        Response response = new Response();
+        if(!ac.equals(activeCode)){
+            response.setCode(60002);
+            response.setMsg("激活码错误");
+            return response;
+        }
+        userService.updateStatus(user.getId());
+        response.setCode(60010);
+        response.setMsg("激活成功");
+        return response;
+
     }
 
 

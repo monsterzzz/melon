@@ -5,6 +5,7 @@ import com.monster.melon.mapper.EventMapper;
 import com.monster.melon.pojo.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

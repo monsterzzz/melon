@@ -15,6 +15,7 @@ create table user(
     avatar int(32) not null default 1,
     description char(255) not null,
     status int(3) not null default 0,
+    email char(32) not null ;
     create_time datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
