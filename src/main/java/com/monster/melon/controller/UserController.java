@@ -44,7 +44,13 @@ public class UserController {
             response.setMsg("验证码错误");
             return response;
         }
-        if(userService.getUserByName(user.getUserName()) != null){
+        boolean flag = false;
+        try{
+            flag = userService.getUserByName(user.getUserName()) != null;
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
+        if(flag){
             response.setCode(20002);
             response.setMsg("用户已存在");
             return response;
@@ -52,12 +58,18 @@ public class UserController {
         userService.insertUser(user);
         response.setCode(20000);
         response.setMsg("success");
+        session.setAttribute("checkCode","");
         return response;
     }
 
     @GetMapping("")
     public List<User> getAllUser(){
         return userService.getAllUser();
+    }
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable("id") Integer id){
+        return userService.getUserById(id);
     }
 
     @PutMapping("/nickname")

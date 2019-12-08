@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableCaching
-// @MapperScan("com.monster.melon.mapper")
 public class MelonApplication {
 
     public static void main(String[] args) {

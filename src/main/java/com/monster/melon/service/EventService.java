@@ -39,6 +39,10 @@ public class EventService{
         eventMapper.deleteEvent(id);
     }
 
+    public void updateViewNum(Integer viewNum,Integer eventId){
+        eventMapper.updateViewNum(viewNum,eventId);
+    }
+
     public List<Event> getEventsByTag(Integer tagId,Integer page){
         page = Math.max(page-1,0);
         return eventMapper.getEventsByTag(tagId,page*eventNum,eventNum);

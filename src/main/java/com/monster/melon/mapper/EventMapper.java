@@ -43,4 +43,9 @@ public interface EventMapper {
 
     List<Event> getEventsByTag(@Param("tagId") Integer tagId, @Param("page") Integer page, @Param("num") Integer num);
 
+
+    @Update("update event set view_num = #{viewNum} where id = #{eventId}")
+    void updateViewNum(@Param("viewNum") Integer viewNum, @Param("eventId") Integer eventId);
+
+
 }

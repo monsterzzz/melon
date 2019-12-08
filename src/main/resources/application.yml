@@ -24,6 +24,17 @@ spring:
         min-idle: 50
         max-wait: -1
         max-active: -1
+  rabbitmq:
+    host: 127.0.01
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 10
+        max-concurrency: 10
+
 
 
 mail_form_addr: monster_zzz@sina.com

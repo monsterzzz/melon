@@ -7,6 +7,7 @@ import com.monster.melon.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -23,21 +24,25 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    @Cacheable(value = "user",keyGenerator = "keyGenerator")
+    @Cacheable(value = "user")
     public List<User> getAllUser() {
         return userMapper.getAllUser();
     }
 
+    @Cacheable(value = "userItem",key = "#p0")
     public User getUserById(Integer id) {
         return userMapper.getUserById(id);
     }
 
+    @Cacheable(value = "userItem")
     public User getUserByName(String name) {
         return userMapper.getUserByName(name);
     }
 
-    public void insertUser(User user) {
+    @CachePut(value = "userItem",key = "#user.getId()")
+    public User insertUser(User user) {
         userMapper.insertUser(user);
+        return user;
     }
 
     public Boolean verify(String username,String password){

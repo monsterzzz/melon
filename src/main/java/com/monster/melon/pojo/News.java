@@ -1,11 +1,14 @@
 package com.monster.melon.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Data;
+import lombok.ToString;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
 
-
+@Data
+@ToString
 public class News {
     private Integer id;
     private Integer userId;
