@@ -1,4 +1,4 @@
-package com.monster.melon.exception;
+package com.monster.melon.error;
 
 public class NickNameExistsException extends Exception {
     public NickNameExistsException() {

@@ -30,10 +30,12 @@ spring:
     username: guest
     password: guest
     virtual-host: /
-    listener:
-      simple:
-        concurrency: 10
-        max-concurrency: 10
+    publisher-confirm-type: correlated
+    publisher-returns: true
+#    listener:
+#      simple:
+#        concurrency: 1
+#        max-concurrency: 1
 
 
 

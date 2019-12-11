@@ -1,17 +1,14 @@
 package com.monster.melon.service;
 
 
-import com.monster.melon.exception.NickNameExistsException;
+import com.monster.melon.error.NickNameExistsException;
 import com.monster.melon.mapper.UserMapper;
 import com.monster.melon.pojo.User;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service

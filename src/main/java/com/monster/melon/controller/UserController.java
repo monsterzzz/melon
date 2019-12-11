@@ -1,6 +1,6 @@
 package com.monster.melon.controller;
 
-import com.monster.melon.exception.NickNameExistsException;
+import com.monster.melon.error.NickNameExistsException;
 import com.monster.melon.pojo.User;
 import com.monster.melon.serializer.Response;
 import com.monster.melon.service.UserService;
