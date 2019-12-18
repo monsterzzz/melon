@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.monster.melon.mapper.NewsMapper">
+
+    <resultMap id="NewsMapper" type="News">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="event_id" property="eventId"/>
+        <result column="admin_opt" property="adminOpt" />
+        <result column="happen_time" property="happenTime" />
+        <result column="content" property="content" />
+        <result column="create_time" property="createTime"/>
+        <association column="id" property="likeNum" select="com.monster.melon.mapper.NewsMapper.getLikeNum"/>
+    </resultMap>
+
+    <select id="getAllNews" resultMap="NewsMapper">
+        select * from news
+    </select>
+
+    <select id="getLikeNum" resultType="integer">
+        select count(*) from news_like where news_id = #{newsId}
+    </select>
+</mapper>

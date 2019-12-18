@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public interface UserMapper {
 
-    @Select("select * from user")
+
     List<User> getAllUser();
 
     //@Select("select * from user where id = #{id}")
@@ -46,5 +46,10 @@ public interface UserMapper {
     @Update("update user set status = 1 where id = #{userId}")
     void updateStatus(@Param("userId") Integer userId);
 
+    List<String> getAllCommentId(@Param("userId") Integer userId);
+
+    List<String> getAllNewsId(@Param("userId") Integer userId);
+
+    List<String> getAllEventId(@Param("userId") Integer userId);
 
 }

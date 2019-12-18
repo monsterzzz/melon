@@ -36,36 +36,23 @@ public class NewsService {
 
     public List<News> getOnePageNews(Integer eventId, Integer page) {
         page = Math.max(page - 1, 0);
-        List<String> newsList = redisTemplate.opsForList().range(String.format("news:%s:%s",eventId,page), page * pageNum, page * pageNum + pageNum);
-        if (newsList == null || newsList.size() == 0){
-            List<News> newsList1 = newsMapper.getOnePageNews(eventId,page * pageNum,pageNum);
-            Map<String,News> map = new HashMap<>();
-            for(News news : newsList1){
-                map.put(news.getId().toString(),news);
-                redisTemplate.opsForList().rightPush(String.format("news:%s:%s",eventId,page),news.getId().toString());
-            }
-            redisTemplate.expire(String.format("news:%s:%s",eventId,page),360, TimeUnit.SECONDS);
-            redisTemplate.opsForHash().putAll("news",map);
-            redisTemplate.expire("news",360, TimeUnit.SECONDS);
-            return newsList1;
-        }
-        List<News> newsList1 = new ArrayList<>();
-        for(String s : newsList){
-            newsList1.add((News) redisTemplate.opsForHash().get("news",s));
-        }
-        return newsList1;
+        return newsMapper.getOnePageNews(eventId,page * pageNum,pageNum);
     }
 
-    public void insertNews(News news) {
-        newsMapper.insertNews(news);
+    public News insertNews(News news) {
+        return newsMapper.insertNews(news);
     }
 
     public void deleteNews(Integer id) {
         newsMapper.deleteNews(id);
     }
 
-
     public News getNewsById(Integer id) {
         return newsMapper.getNewsById(id);
+    }
+
+
+    public List<News> getAllNews(){
+        return newsMapper.getAllNews();
     }
 }

@@ -34,7 +34,7 @@ public interface CommentMapper {
 
     @Insert("insert into comment (id,user_id,news_id,reply_id,content) values(#{id},#{userId},#{newsId},#{replyId},#{content})")
     @Options(useGeneratedKeys = true,keyColumn = "id")
-    void insertComment(Comment comment);
+    Comment insertComment(Comment comment);
 
     @Delete("delete from comment where id = #{id}")
     void deleteComment(@Param(value = "id") Integer id);
@@ -44,5 +44,9 @@ public interface CommentMapper {
 
     @Select("select count(*) from comment where eventId = #{eventId}")
     Integer getCommonCountByEventId(@Param("eventId") Integer eventId);
+
+    List<Comment> getAllComment();
+
+    Integer getLikeNum(@Param("commentId") Integer commentId);
 
 }

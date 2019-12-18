@@ -21,22 +21,18 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    @Cacheable(value = "user")
     public List<User> getAllUser() {
         return userMapper.getAllUser();
     }
 
-    @Cacheable(value = "userItem",key = "#p0")
     public User getUserById(Integer id) {
         return userMapper.getUserById(id);
     }
 
-    @Cacheable(value = "userItem")
     public User getUserByName(String name) {
         return userMapper.getUserByName(name);
     }
 
-    @CachePut(value = "userItem",key = "#user.getId()")
     public User insertUser(User user) {
         userMapper.insertUser(user);
         return user;

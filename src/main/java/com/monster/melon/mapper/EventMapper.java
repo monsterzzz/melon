@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ public interface EventMapper {
      * 获得所有事件
      * @return 事件列表
      */
-    @Select("select * from event")
+
     List<Event> getAllEvents();
 
 
@@ -47,5 +48,12 @@ public interface EventMapper {
     @Update("update event set view_num = #{viewNum} where id = #{eventId}")
     void updateViewNum(@Param("viewNum") Integer viewNum, @Param("eventId") Integer eventId);
 
+
+    // @Select("select * from event limit 0,#{count}")
+    List<Event> getCountEvents(@Param("count") Integer count);
+
+    List<Event> getAllEventsId();
+
+    Event getEventById(@Param("eventId") Integer eventId);
 
 }

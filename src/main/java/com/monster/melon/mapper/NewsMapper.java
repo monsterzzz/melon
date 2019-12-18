@@ -29,7 +29,7 @@ public interface NewsMapper {
 
     @Insert("insert into news (id,user_id,event_id,admin_opt,happen_time,content) values(#{id},#{userId},#{eventId},#{adminOpt},#{happenTime},#{content})")
     @Options(useGeneratedKeys = true,keyColumn = "id")
-    void insertNews(News news);
+    News insertNews(News news);
 
     @Delete("delete from news where id = #{id}")
     void deleteNews(@Param(value = "id") Integer id);
@@ -39,5 +39,9 @@ public interface NewsMapper {
 
     @Select("select count(*) from news where event_id = #{eventId}")
     Integer getNewsCountByEventId(@Param("eventId") Integer eventId);
+
+    List<News> getAllNews();
+
+    Integer getLikeNum(@Param("newsId") Integer newsId);
 
 }

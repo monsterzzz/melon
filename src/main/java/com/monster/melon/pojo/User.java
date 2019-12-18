@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -23,5 +24,8 @@ public class User implements Serializable {
     private Integer status;
     private Timestamp createTime;
     private String email;
+    private List<String> events;
+    private List<String> comments;
+    private List<String> news;
 
 }

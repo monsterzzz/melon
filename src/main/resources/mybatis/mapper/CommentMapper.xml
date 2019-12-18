@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.monster.melon.mapper.CommentMapper">
+
+    <resultMap id="CommentMapper" type="Comment">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId" />
+        <result column="reply_id" property="replyId" />
+        <result column="news_id" property="newsId" />
+        <result column="content" property="content" />
+        <result column="create_time" property="createTime" />
+        <association
+                column="id"
+                property="likeNum"
+                select="com.monster.melon.mapper.CommentMapper.getLikeNum"
+        />
+    </resultMap>
+
+    <select id="getAllComment" resultType="Comment" resultMap="CommentMapper">
+        select * from comment
+    </select>
+
+    <select id="getLikeNum" resultType="integer">
+        select count(*) from comment_like where comment_id = #{commentId}
+    </select>
+
+
+
+</mapper>

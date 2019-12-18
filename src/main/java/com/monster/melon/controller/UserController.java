@@ -27,6 +27,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/all")
+    public Response allUser(){
+        return new Response().setData(userService.getAllUser());
+    }
+
     @PostMapping("")
     public Response signIn(User user,HttpServletRequest request,@RequestParam("checkCode") String checkCode){
         HttpSession session = request.getSession();

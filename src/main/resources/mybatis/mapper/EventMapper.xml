@@ -24,4 +24,20 @@
         select a.* from event as a left join event_tag as b on a.id = b.event_id where tag_id = #{tagId} limit #{page},#{num}
     </select>
 
+    <select id="getCountEvents" resultType="com.monster.melon.pojo.Event" resultMap="EventMapper">
+        select * from event limit 0,#{count}
+    </select>
+
+    <select id="getAllEventsId" resultType="Event">
+        select id,create_time from event
+    </select>
+
+    <select id="getAllEvents" resultType="com.monster.melon.pojo.Event" resultMap="EventMapper">
+        select * from event;
+    </select>
+
+    <select id="getEventById" resultType="com.monster.melon.pojo.Event" resultMap="EventMapper">
+        select * from event where id = #{eventId}
+    </select>
+
 </mapper>
