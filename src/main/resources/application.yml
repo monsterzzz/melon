@@ -59,7 +59,7 @@ news_page: 7
 
 endpoint: http://oss-cn-beijing.aliyuncs.com
 accessKeyId: LTAI4Fn1Vutg5RhfQkaVgHXn
-accessKeySecret: 4y3mJJzSbphBekOqZSz2FHxUiCzkkO
+accessKeySecret: *****
 bucketName: melon-site
 
 
