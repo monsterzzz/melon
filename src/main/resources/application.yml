@@ -12,7 +12,7 @@ spring:
   mail:
     host: smtp.sina.com
     username: monster_zzz@sina.com
-    password: a885471db6e6302a
+    password: ***
   redis:
     host: 127.0.0.1
     port: 6379
@@ -58,7 +58,7 @@ news_page: 7
 
 
 endpoint: http://oss-cn-beijing.aliyuncs.com
-accessKeyId: LTAI4Fn1Vutg5RhfQkaVgHXn
+accessKeyId: ***
 accessKeySecret: *****
 bucketName: melon-site
 
